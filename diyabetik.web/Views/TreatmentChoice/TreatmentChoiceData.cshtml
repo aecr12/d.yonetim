@@ -1,0 +1,91 @@
+@model TreatmentChoiceDataViewModel
+
+@{
+    var tensions = Model.TreatmentChoiceDatas;
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>list</title>
+    <link href="/modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="/modules/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+    @await Html.PartialAsync("_navbar")
+    
+    <partial name="_header"></partial>
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    @await Component.InvokeAsync("Categories")
+                </div>
+                <div class="col-md-9">
+                    
+                    @*Ürünler Gelecek*@
+                    @if(Model.TreatmentChoiceDatas.Count == 0)
+                    {
+                        @await Html.PartialAsync("_nouser")
+                    }
+                    else
+                    {
+                        <div class="row">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            
+                                            <th scope="col">Id</th>
+                                            <th scope="col">Insulin</th>
+                                            <th scope="col">Pompa Tedavisi</th>
+                                            <th scope="col">Oral Antidiyabetik</th>
+                                            <th scope="col">Insulin Antidiyabetik</th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for (var i = 0; i < Model.TreatmentChoiceDatas.Count; i++)
+                                        {
+                                            <tr>
+                                                
+                                                <td>@Model.TreatmentChoiceDatas[@i].Id</td>
+                                                <td>@Model.TreatmentChoiceDatas[@i].Insulin</td>
+                                                <td>@Model.TreatmentChoiceDatas[@i].Pump</td>
+                                                <td>@Model.TreatmentChoiceDatas[@i].OralAntidiabetic</td>
+                                                <td>@Model.TreatmentChoiceDatas[@i].InsulinAntidiabetic</td>
+                                                <td>
+                                                    <a href=/TreatmentChoice/TreatmentChoiceDelete/@Model.TreatmentChoiceDatas[@i].Id class="btn btn-primary btn-sm d-flex justify-content-center" onclick="sendId('@Model.TreatmentChoiceDatas"[i].Id')">Sil</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                        </div>
+                    }
+                    </div>
+                    </div>
+	</div>
+    </main>
+</body>
+</html>
+
+
+<script>
+    function sendId(id){
+        $.ajax({
+		url: "/TreatmentChoice/TreatmentChoiceDelete",
+		type: "POST",
+		dataType: "text",
+		data: { id: id },
+		success: function(response) {
+        console.log("başarılı");
+    },
+    error: function(error) {
+        console.log("başarısız");
+    }
+	});
+    }
+</script>

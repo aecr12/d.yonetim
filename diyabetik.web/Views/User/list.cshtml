@@ -1,0 +1,52 @@
+@model UserViewModel
+@{
+    var users = Model.Users;
+}
+<div class="row">
+    <div class="col-md">
+        @if(Model.Users.Count == 0)
+        {
+            @await Html.PartialAsync("_nouser")
+        }
+        else
+        {
+            <div class="row">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Ad</th>
+                                <th scope="col">Mail</th>
+                                <th scope="col">Id</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (var i = 0; i < Model.Users.Count; i++)
+                            {
+                                <tr>
+                                    <th scope="row">@i</th>
+                                    <td>@Model.Users[@i].adSoyad</td>
+                                    <td>@Model.Users[@i].Mail</td>
+                                    <td>@Model.Users[@i].Id</td>
+                                    <td>
+                                        <a href="/user/userdetails/@Model.Users[@i].Id/" class="btn btn-primary btn-sm d-flex justify-content-center">Yönet</a>
+                                    </td>
+                                    <td>
+                                        <a href="/user/userdelete/@Model.Users[@i].Id" class="btn btn-primary btn-sm d-flex justify-content-center">Sil</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+            </div>
+        }
+        </div>
+        @* buton create actionunu tetikliyor, onclick ekleyip js ajaxla da yapabilirdim fakat farklı kullanım yöntemleri için bu şekilde kullandım *@
+        <div class="d-flex justify-content-end">
+            <a href="/User/Create" class="btn btn-primary">Kullanıcı Ekle</a>
+        </div>
+</div>
+<script>
+</script>

@@ -1,0 +1,12 @@
+C:\Users\Aykut\Desktop\diyabetik\diyabetik.model\bin\Debug\net6.0\diyabetik.model.deps.json
+C:\Users\Aykut\Desktop\diyabetik\diyabetik.model\bin\Debug\net6.0\diyabetik.model.dll
+C:\Users\Aykut\Desktop\diyabetik\diyabetik.model\bin\Debug\net6.0\diyabetik.model.pdb
+C:\Users\Aykut\Desktop\diyabetik\diyabetik.model\obj\Debug\net6.0\diyabetik.model.csproj.AssemblyReference.cache
+C:\Users\Aykut\Desktop\diyabetik\diyabetik.model\obj\Debug\net6.0\diyabetik.model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Aykut\Desktop\diyabetik\diyabetik.model\obj\Debug\net6.0\diyabetik.model.AssemblyInfoInputs.cache
+C:\Users\Aykut\Desktop\diyabetik\diyabetik.model\obj\Debug\net6.0\diyabetik.model.AssemblyInfo.cs
+C:\Users\Aykut\Desktop\diyabetik\diyabetik.model\obj\Debug\net6.0\diyabetik.model.csproj.CoreCompileInputs.cache
+C:\Users\Aykut\Desktop\diyabetik\diyabetik.model\obj\Debug\net6.0\diyabetik.model.dll
+C:\Users\Aykut\Desktop\diyabetik\diyabetik.model\obj\Debug\net6.0\refint\diyabetik.model.dll
+C:\Users\Aykut\Desktop\diyabetik\diyabetik.model\obj\Debug\net6.0\diyabetik.model.pdb
+C:\Users\Aykut\Desktop\diyabetik\diyabetik.model\obj\Debug\net6.0\ref\diyabetik.model.dll

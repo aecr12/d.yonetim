@@ -1,0 +1,24 @@
+@using diyabetik.web.Notifications
+@{
+    var oneSignalService = new OneSignalService();
+    var notificationList = await oneSignalService.GetSentNotifications();
+}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Başlık</th>
+            <th scope="col">İçerik</th>
+            <th scope="col">Tarih</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var notification in notificationList)
+        {
+            <tr>
+                <td>@notification.Title</td>
+                <td>@notification.Body</td>
+                <td>@notification.Date</td>
+            </tr>
+        }
+    </tbody>
+</table>

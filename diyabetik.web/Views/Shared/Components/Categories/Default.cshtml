@@ -1,0 +1,10 @@
+@model List<Category>
+  @* kategorilerin getirilmesi, (veritabından da getirilebilirdi) *@
+  <div class="list-group">
+    <a href="/BloodSugar/BloodSugarData" class="list-group-item list-group-item-action">@Model[0].Name</a>
+    <a href="/Medication/MedicationData" class="list-group-item list-group-item-action">@Model[1].Name</a>
+    <a href="/Tension/TensionData" class="list-group-item list-group-item-action">@Model[2].Name</a>
+    <a href="/UserInformations/UserInformationsData" class="list-group-item list-group-item-action">@Model[3].Name</a>
+    <a href="/StepCounter/StepCounterData" class="list-group-item list-group-item-action">@Model[4].Name</a>
+    <a href="/TreatmentChoice/TreatmentChoiceData" class="list-group-item list-group-item-action">@Model[5].Name</a>
+</div> 

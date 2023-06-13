@@ -1,0 +1,110 @@
+@model PlannedNotification
+@using diyabetik.web.Notifications
+@using diyabetik.dao.Concrete;
+@{
+    var oneSignalService = new OneSignalService();
+    var notificationList = await oneSignalService.GetPlannedNotificationsNotSendYet();
+    NotificationDAO notificationDAO = new NotificationDAO();
+}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="/modules/jquery/dist/jquery.min.js"></script>
+<h2>Bildirim Gönder</h2>
+<div>
+    <form method="POST" asp-controller="Notification" asp-action="ReceivePlannedNotification">
+        <div class="form-group">
+            <label for="Title">Bildirim Başlığı</label>
+            <input asp-for="Title" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="Body">İçerik</label>
+            <input asp-for="Body" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="Date">Tarih ve Saat</label>
+            <input type="datetime-local" class="form-control" asp-for="Date">
+        </div>
+        <button type="submit" class="btn btn-primary mt-1">Gönder</button>
+    </form>
+
+    <div class="accordion mt-3 " id="accordionNotificationTable">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFirst">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Bekleyen Bildirimler
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    @if(notificationList.Count==0)
+                    {
+                        <h5>Planlanmış Bildirim Bulunmuyor</h5>
+                    }else
+                    {
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Başlık</th>
+                                    <th scope="col">İçerik</th>
+                                    <th scope="col">Tarih</th>
+                                    <th scope="col"></th>
+                                    <th scope="col">Durum</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var notification in notificationList)
+                                {
+                                    <tr>
+                                        <td>@notification.Title</td>
+                                        <td>@notification.Body</td>
+                                        <td>@notification.Date</td>
+                                        <td>
+                                            <a class="btn btn-primary btn-sm d-flex justify-content-center delete-notification" data-notification-id="@notification.NotificationId">Sil</a>
+                                        </td>
+                                        <td class="col delete-status">@{
+                                            var notificationTemp= await notificationDAO.GetNotificationByNotificationId(notification.NotificationId);
+                                            if(notificationTemp.State==false){
+                                                <span>İptal Edildi</span>
+                                            }else
+                                            {
+                                                <span>Devam Ediyor</span>
+                                            }
+                                            }
+                                            </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    @* delete işleminin tetiklenmesi. delete işleminde sonra iptal edildi yazısının eklenmesi ve sil butonunun inaktif hale getirilmesi *@
+    $(document).ready(function() {
+        $(".delete-notification").click(function() {
+            var notificationId = $(this).data("notification-id");
+            var deleteButton = $(this);
+            var deleteStatus = deleteButton.closest("tr").find(".delete-status");
+            $.ajax({
+                url: "/Notification/DeleteNotification",
+                type: "POST",
+                dataType: "text",
+                data: { NotificationId: notificationId },
+                success: function(response) {
+                    console.log(response);
+                    var parsedResponse = JSON.parse(response);
+                    var state = parsedResponse.success.state;
+                    if(state == false){
+                        deleteStatus.text('İptal Edildi');
+                        deleteButton.addClass('disabled');
+                    }
+                },
+                error: function(xhr, status, error) {
+
+                }
+            });
+        });
+    });
+</script>

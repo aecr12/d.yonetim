@@ -1,0 +1,88 @@
+@model MedicationDataViewModel
+
+@{
+    var medications = Model.MedicationDatas;
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>list</title>
+    <link href="/modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="/modules/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+    @await Html.PartialAsync("_navbar")
+    
+    <partial name="_header"></partial>
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    @await Component.InvokeAsync("Categories")
+                </div>
+                <div class="col-md-9">
+                    
+                    @*Ürünler Gelecek*@
+                    @if(Model.MedicationDatas.Count == 0)
+                    {
+                        @await Html.PartialAsync("_nouser")
+                    }
+                    else
+                    {
+                        <div class="row">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            
+                                            <th scope="col">Id</th>
+                                            <th scope="col">Değer</th>
+                                            <th scope="col">Tarih</th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for (var i = 0; i < Model.MedicationDatas.Count; i++)
+                                        {
+                                            <tr>
+                                                
+                                                <td>@Model.MedicationDatas[@i].Id</td>
+                                                <td>@Model.MedicationDatas[@i].MedicineName</td>
+                                                <td>@Model.MedicationDatas[@i].TakenDate</td>
+                                                <td>
+                                                    <a href=/Medication/MedicationDelete/@Model.MedicationDatas[@i].Id class="btn btn-primary btn-sm d-flex justify-content-center" onclick="sendId('@Model.MedicationDatas[i].Id')">Sil</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                        </div>
+                    }
+                    </div>
+                    </div>
+	</div>
+    </main>
+</body>
+</html>
+
+
+<script>
+    // silinecek ögenin idsi ajax ile controllere gönderildi, controllerde silme işlemi yapılıyor.
+    function sendId(id){
+        $.ajax({
+		url: "/Medication/MedicationDelete",
+		type: "POST",
+		dataType: "text",
+		data: { id: id },
+		success: function(response) {
+        console.log("başarılı");
+    },
+    error: function(error) {
+        console.log("başarısız");
+    }
+	});
+    }
+</script>

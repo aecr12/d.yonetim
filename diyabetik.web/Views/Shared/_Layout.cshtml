@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+    <link href="/modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="/modules/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+    @* navbar neredeyse her sayfada görüntüleneceği için layout içinde tanımlandı *@
+	@await Html.PartialAsync("_navbar")
+    <partial name="_header"></partial>
+    <main>
+        <div class="container">
+             @RenderBody()
+	    </div>
+    </main>
+</body>
+</html>

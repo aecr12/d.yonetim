@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "osc2OR9xE7TPN1T4PylEhYUmUJyElEcjtXsR+IXnr5M=",
+  "Source": "diyabetik.web",
+  "BasePath": "_content/diyabetik.web",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "diyabetik.web\\wwwroot",
+      "Source": "diyabetik.web",
+      "ContentRoot": "C:\\Users\\Aykut\\Desktop\\diyabetik\\diyabetik.web\\wwwroot\\",
+      "BasePath": "_content/diyabetik.web",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}

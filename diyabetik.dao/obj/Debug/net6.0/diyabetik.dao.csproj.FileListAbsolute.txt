@@ -1,0 +1,15 @@
+C:\Users\Aykut\Desktop\diyabetik\diyabetik.dao\bin\Debug\net6.0\diyabetik.dao.deps.json
+C:\Users\Aykut\Desktop\diyabetik\diyabetik.dao\bin\Debug\net6.0\diyabetik.dao.dll
+C:\Users\Aykut\Desktop\diyabetik\diyabetik.dao\bin\Debug\net6.0\diyabetik.dao.pdb
+C:\Users\Aykut\Desktop\diyabetik\diyabetik.dao\bin\Debug\net6.0\diyabetik.model.dll
+C:\Users\Aykut\Desktop\diyabetik\diyabetik.dao\bin\Debug\net6.0\diyabetik.model.pdb
+C:\Users\Aykut\Desktop\diyabetik\diyabetik.dao\obj\Debug\net6.0\diyabetik.dao.csproj.AssemblyReference.cache
+C:\Users\Aykut\Desktop\diyabetik\diyabetik.dao\obj\Debug\net6.0\diyabetik.dao.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Aykut\Desktop\diyabetik\diyabetik.dao\obj\Debug\net6.0\diyabetik.dao.AssemblyInfoInputs.cache
+C:\Users\Aykut\Desktop\diyabetik\diyabetik.dao\obj\Debug\net6.0\diyabetik.dao.AssemblyInfo.cs
+C:\Users\Aykut\Desktop\diyabetik\diyabetik.dao\obj\Debug\net6.0\diyabetik.dao.csproj.CoreCompileInputs.cache
+C:\Users\Aykut\Desktop\diyabetik\diyabetik.dao\obj\Debug\net6.0\diyabetik.dao.csproj.CopyComplete
+C:\Users\Aykut\Desktop\diyabetik\diyabetik.dao\obj\Debug\net6.0\diyabetik.dao.dll
+C:\Users\Aykut\Desktop\diyabetik\diyabetik.dao\obj\Debug\net6.0\refint\diyabetik.dao.dll
+C:\Users\Aykut\Desktop\diyabetik\diyabetik.dao\obj\Debug\net6.0\diyabetik.dao.pdb
+C:\Users\Aykut\Desktop\diyabetik\diyabetik.dao\obj\Debug\net6.0\ref\diyabetik.dao.dll

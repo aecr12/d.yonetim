@@ -1,0 +1,91 @@
+@model User
+@{
+	Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Details</title>
+	<link href="/modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+	<script src="/modules/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+	<partial name="_navbar"></partial>
+	@await Html.PartialAsync("_header")
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				 @await Component.InvokeAsync("Categories")
+			</div>
+			<div class="col-md-9 text-center">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th scope="col">Ad</th>
+							<th scope="col">Mail</th>
+							<th scope="col">Id</th>
+							<th scope="col"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>@Model.adSoyad</td>
+							<td>@Model.Mail</td>
+							<td>@Model.Id</td>
+							<td>
+								<a asp-controller="User" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary btn-sm d-flex justify-content-center">Değiştir</a>
+							</td>
+						</tr>
+					</tbody>
+					</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+
+<script>
+	$.ajax({
+		url: "/BloodSugar/SetId",
+		type: "POST",
+		dataType: "text",
+		data: { id: '@Model.Id' },
+		success: function(response) {
+        console.log("başarılı");
+    },
+    error: function(error) {
+        console.log("başarısız");
+    }
+	});
+
+	$.ajax({
+		url: "/Medication/SetId",
+		type: "POST",
+		dataType: "text",
+		data: { id: '@Model.Id' },
+		success: function(response) {
+        console.log("başarılı");
+    },
+    error: function(error) {
+        console.log("başarısız");
+    }
+	});
+
+	$.ajax({
+		url: "/Tension/SetId",
+		type: "POST",
+		dataType: "text",
+		data: { id: '@Model.Id' },
+		success: function(response) {
+        console.log("başarılı");
+    },
+    error: function(error) {
+        console.log("başarısız");
+    }
+	});
+</script>

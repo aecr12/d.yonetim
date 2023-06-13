@@ -1,0 +1,20 @@
+@model User
+@* kullanıcı oluşturma formu *@
+<form method="POST">
+    <div class="form-group">
+        <label for="adSoyad">Ad-Soyad</label>
+        <input asp-for="adSoyad" value="@Model.adSoyad" class="form-control">
+        <span asp-validation-for="adSoyad" class="text-warning"></span>
+    </div>
+    <div class="form-group">
+        <label for="Mail">Mail</label>
+        <input asp-for="Mail" value="@Model.Mail" class="form-control">
+        <span asp-validation-for="Mail" class="text-warning"></span>
+    </div>
+    <div class="form-group">
+        <label for="Password">Password</label>
+        <input asp-for="Password" value="@Model.Password" class="form-control">
+        <span asp-validation-for="Password" class="text-warning"></span>
+    </div>
+    <button type="submit" class="btn btn-primary mt-1">Ekle</button>
+</form>
